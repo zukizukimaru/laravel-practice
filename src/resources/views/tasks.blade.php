@@ -38,7 +38,14 @@
                     <td class="table-text">
                         <div>{{$task->name}}</div>
                     </td>
-                    <td></td>
+                    <td>
+                        <form action="/task/{{ $task->id }}" method="post">
+                            @csrf
+                            {{ method_field('DELETE') }}
+
+                            <button>ボタン削除</button>
+                        </form>
+                    </td>
                 </tr>
                 @endforeach
             </tbody>

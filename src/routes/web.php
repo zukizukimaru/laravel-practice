@@ -15,7 +15,10 @@ use App\Task;
 use Illuminate\Http\Request;
 
 Route::get('/', function () {
-    return view('tasks');
+    $tasks = Task::orderBy('created_at', 'asc')->get();
+    return view('tasks', [
+        'tasks' => $tasks
+    ]);
 });
 
 Route::post('/task', function (Request $request) {
@@ -23,7 +26,7 @@ Route::post('/task', function (Request $request) {
         'task' => 'required|max:255',
     ]);
 
-    if($validator->fails()) {
+    if ($validator->fails()) {
         return redirect('/')
             ->withInput()
             ->withErrors($validator);
@@ -33,5 +36,10 @@ Route::post('/task', function (Request $request) {
     $task->save();
 
     return redirect('/');
+});
 
+Route::delete('/task/{id}', function ($id) {
+    Task::findOrFail($id)->delete();
+
+    return redirect('/');
 });
