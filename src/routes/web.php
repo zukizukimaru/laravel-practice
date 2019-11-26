@@ -11,6 +11,7 @@
 |
 */
 
+use App\Task;
 use Illuminate\Http\Request;
 
 Route::get('/', function () {
@@ -27,4 +28,10 @@ Route::post('/task', function (Request $request) {
             ->withInput()
             ->withErrors($validator);
     }
+    $task = new Task();
+    $task->name = $request->task;
+    $task->save();
+
+    return redirect('/');
+
 });
