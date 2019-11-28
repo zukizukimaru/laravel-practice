@@ -37,17 +37,16 @@
                     <td class="table-text">
                         <div>{{$task->name}}</div>
                     </td>
+
+                    <td>
+                    　　 <a href="/edit/{{$task->id}}"><button type="button" class="btn btn-dark">編集</button>
+                    </td>
                     <td>
                         <form action="/task/{{ $task->id }}" method="post">
-                            @csrf
-                            {{ method_field('DELETE') }}
-
-                            <button>ボタン削除</button>
+                             @csrf
+                             {{ method_field('DELETE') }}
+                             <button type="button" class="btn btn-dark">タスク削除</button>
                         </form>
-                    </td>
-                    <td>{{$task->id}}</td>
-                    <td>
-                        <a href="/edit/{{$task->id}}"><button>編集</button></a>
                     </td>
                 </tr>
                 @endforeach
