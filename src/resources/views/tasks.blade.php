@@ -32,7 +32,6 @@
                 <th>Task</th>
                 <th>&nbsp;</th>
             </thead>
-            <tbody>
                 @foreach ($tasks as $task)
                 <tr>
                     <td class="table-text">
@@ -45,6 +44,10 @@
 
                             <button>ボタン削除</button>
                         </form>
+                    </td>
+                    <td>{{$task->id}}</td>
+                    <td>
+                        <a href="/edit/{{$task->id}}"><button>編集</button></a>
                     </td>
                 </tr>
                 @endforeach

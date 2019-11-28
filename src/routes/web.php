@@ -13,6 +13,7 @@
 
 use App\Task;
 use Illuminate\Http\Request;
+use Illuminate\Http\Controllers\TasksControlle;
 
 Route::get('/', function () {
     $tasks = Task::orderBy('created_at', 'asc')->get();
@@ -43,3 +44,10 @@ Route::delete('/task/{id}', function ($id) {
 
     return redirect('/');
 });
+
+Route::get('/edit/{id}' ,'TasksControlle@edit');
+
+# 編集フォーム=>UPDATE処理
+Route::patch('task/update/{id}', 'TasksControlle@update');
+
+
