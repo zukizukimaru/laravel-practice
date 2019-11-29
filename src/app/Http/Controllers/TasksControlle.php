@@ -16,6 +16,8 @@ public function edit($id)
     $data = Task::findOrFail($id);
 
     return view('edit',['message' => '編集フォーム','data' => $data]);
+
+
 }
 
 public function update(Request $request,$id)

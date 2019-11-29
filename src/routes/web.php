@@ -15,6 +15,7 @@ use App\Task;
 use Illuminate\Http\Request;
 use Illuminate\Http\Controllers\TasksControlle;
 
+
 Route::get('/', function () {
     $tasks = Task::orderBy('created_at', 'asc')->get();
     return view('tasks', [
@@ -51,3 +52,7 @@ Route::get('/edit/{id}' ,'TasksControlle@edit');
 Route::patch('task/update/{id}', 'TasksControlle@update');
 
 
+
+Auth::routes();
+
+Route::get('/home', 'HomeController@index')->name('home');

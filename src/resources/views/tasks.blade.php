@@ -7,6 +7,7 @@
  <form action="{{url('task')}}" method="post" class="form-horisontal">
     @csrf
     <div class="form-group">
+        <a href="{{ route('login') }}">Login</a>
         <label for="task" class="col-sm-3 control-label">タスク</label>
         <div class="col-sm-6">
             <input type="text" name="task" id="task-name" class="form-control">
@@ -39,13 +40,13 @@
                     </td>
 
                     <td>
-                    　　 <a href="/edit/{{$task->id}}"><button type="button" class="btn btn-dark">編集</button>
+                    　　 <a href="/edit/{{$task->id}}"><button type="button" class="btn btn-dark">編集</button></a>
                     </td>
                     <td>
                         <form action="/task/{{ $task->id }}" method="post">
                              @csrf
                              {{ method_field('DELETE') }}
-                             <button type="button" class="btn btn-dark">タスク削除</button>
+                             <button class="btn btn-dark">削除</button>
                         </form>
                     </td>
                 </tr>

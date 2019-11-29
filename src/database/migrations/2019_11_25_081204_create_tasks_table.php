@@ -17,6 +17,11 @@ class CreateTasksTable extends Migration
             $table->bigIncrements('id');
             $table->string('name');
             $table->timestamps();
+            $table->integer('folder_id')->unsigned();
+            $table->date('due_date');
+            $table->integer('status')->default(1);
+
+            $table->foreign('folder_id')->references('id')->on('folders');
         });
     }
 
